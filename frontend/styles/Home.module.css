@@ -53,14 +53,7 @@
   cursor: pointer;
 }
 
-.signIn {
-  justify-content: space-between;
-  width: 4.5rem;
-}
 
-.profile {
-  width: 1.1rem;
-}
 
 
 .searchContainer {
@@ -69,13 +62,32 @@
 
 .searchHeader {
   display: flex;
+  flex-direction: column;
   background-color: #ffffff;
   /*background-image: linear-gradient(to right top, #d16ba5, #c777b9, 
   #ba83ca, #aa8fd8, #9a9ae1, #8aa7ec, #79b3f4, #69bff8, #52cffe, #41dfff, #46eefa, #5ffbf1);  */
   background-image: linear-gradient(to right top, #d3fca0, #a9f7b8, #8dedcf, #84e1dd, #8dd3e0);
-  height: 20rem;
+  height: 40rem;
   padding: 0 11.5rem;
   padding-top: 3rem;
+  border-radius: 15px;
+  margin: 20px;
+}
+.searchSection {
+  margin-top: 6rem;
+}
+.searchTitle {
+  font-size: 56px;
+  font-weight: 600;
+  color: white;
+  text-align: left;
+  align-items: center;
+}
+.upSection{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 20rem;
 }
 
 .adSection {
@@ -87,6 +99,7 @@
   margin-left: 5rem;
   align-items: center;
   border-radius: 1rem;
+  margin-top: 5rem;
 }
 
 .adtext {
@@ -127,27 +140,20 @@
   width: 4.5rem;
 }
 
-.searchSection > h3 {
-  color: #ffffff;
-  padding-bottom: 1rem;
-  font-size: 1.5rem;
-  letter-spacing: 0.01rem;
-}
-
 .input_section {
   display: flex;
   align-items: center;
-  width: 50.5rem;
-  height: 3rem;
+  width: 67.5rem;
+  height: 4rem;
   border: 1px solid #ffffff;
-  border-radius: 0.3rem;
+  border-radius: 15px;
   background-color: #F5F5F6;
 }
 
 .inputField {
-  width: 48rem;
+  width: 65rem;
   color: #1E1E1E;
-  height: 2rem;
+  height: 3rem;
   padding-left: 2rem;
   border: none;
   background-color: #F5F5F6;
@@ -156,7 +162,7 @@
 
 .inputField::placeholder {
   color: #bbbbbb;
-  font-size: 1rem;
+  font-size: 1.5rem;
 }
 
 .inputField:hover,
@@ -170,28 +176,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 2rem;
-  height: 2rem;
+  width: 2.5rem;
+  height: 2.5rem;
   font-size: 1.2rem;
   background-color: #d4d3d3;
   border: none;
   outline: none;
   border-radius: 0.3rem;
   cursor: pointer;
+  margin-right: 5px;
 }
 
 .magnifying {
-  width: 1.2rem;
+  width: 1.7rem;
 }
 
 .sponsored {
   display: flex;
   align-items: center;
-  font-size: 0.9rem;
+  font-size: 20px;
   color: #ffffff;
   padding-top: 1rem;
   padding-left: 0.3rem;
   font-weight: bold;
+  margin-top: 3rem;
 }
 
 .RocketColored {
@@ -202,6 +210,12 @@
   padding-left: 0.3rem;
   color: #dc39fd;
   font-weight: 600;
+}
+
+.searchResultsContent {
+  display: flex;
+  flex-direction: column;
+  
 }
 
 .searchResults {
@@ -219,9 +233,14 @@
   margin-bottom: 0.5rem;
 }
 
-.blueText {
-  color: #2B6CB0;
+.blueText a {
+  color: #414141;
+  font-size: 16px;
   font-weight: 600;
+}
+
+.blueText a:hover {
+  color: #445AB4;
 }
 
 .txnSection {
@@ -237,10 +256,11 @@
   margin-bottom: 0.5rem;
   padding-bottom: 0.5rem;
 }
-/* Home.module.css */
+
+
 .clickableAddress {
   cursor: pointer;
-  color: blue; /* Adjust the color to your preference */
+  color: #445AB4; /* Adjust the color to your preference */
 }
 
 
@@ -273,32 +293,6 @@
   background-color: #bfbffe;
   padding: 0.4rem 0.5rem;
   border-radius: 0.5rem;
-}
-
-.inTxn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 2.5rem;
-  height: 1.5rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  background-color: #98d9c7;
-  color: #158067;
-  border-radius: 0.4rem;
-}
-
-.outTxn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 2.5rem;
-  height: 1.5rem;
-  font-size: 0.8rem;
-  font-weight: 600;
-  background-color: #f7d37f;
-  color: #a6862c;
-  border-radius: 0.4rem;
 }
 
 .heroSectionContainer {
@@ -474,10 +468,7 @@
 
 
 
-
-
-
-/* Hero Section */
+/* About-Hero Section */
 .hero {
   display: flex;
   justify-content: center;
@@ -936,8 +927,9 @@
 }
 
 /*Top Risk CSS*/
-#bg {
-  background: linear-gradient(0deg, rgba(124, 202, 180, 1) 0%, rgba(160, 252, 237, 1) 100%);
+
+.bg {
+  background-image: linear-gradient(to right top, #d3fca0, #a9f7b8, #8dedcf, #84e1dd, #8dd3e0);
   padding: 20px;
   min-height: 100vh;
   display: flex;
@@ -945,26 +937,32 @@
   align-items: center;
 }
 
+.riskContent {
+  display: flex;
+  flex-direction: row;
+}
+
 .riskResults {
-  background-color: whitesmoke;
-  padding: 20px;
-  border-radius: 8px;
-  margin-top: 20px;
-  max-width: 100%;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgb(255, 255, 255);
+  padding: 50px;
+  border-radius: 12px;
+  width: 600px;
+  height: fit-content;
+  box-shadow: 0rem 0 1.5rem #dddddd89;
+  margin: 20px;
 }
 
 .riskTitle {
   font-size: 24px;
   font-weight: bold;
-  color: #494949;
+  color: #1E1E1E;
   margin-bottom: 20px;
   text-align: center;
 }
 
 .risk {
   font-size: 16px;
-  color: #494949;
+  background-color: #ffffff;
   justify-content: space-between;
 }
 
@@ -977,31 +975,36 @@
 }
 
 .riskSection thead {
-  background-color: rgb(236, 235, 235);
+  background-color: rgb(255, 255, 255);
 }
 
 .riskSection th {
-  color: #3b3b3b;
+  color: #1E1E1E;
   text-align: left;
   padding: 12px;
 }
 
 .riskSection tr {
-  border-bottom: 1px solid #2c2c2c;
+  border-bottom: 1px solid #F5F5F6;
 }
 
 .riskSection tr:hover {
-  background: white;
+  background: #F5F5F6;
 }
 
 .riskSection td {
   padding: 12px;
-  color: #3b3b3b;
   word-wrap: break-word;
 }
 
+.riskScore{
+  font-size: 20px;
+  color: #445AB4;
+  font-weight: 600;
+}
+
 .blueText {
-  color: #1e90ff;
+  color: #445AB4;
   cursor: pointer;
   word-break: break-all;
 }
@@ -1060,7 +1063,9 @@
   color: #ff0000;
 }
 
-/* Home.module.css */
+
+/* SearchResult */
+
 .searchResults {
   background: #ffffff;
   padding: 20px;
@@ -1068,7 +1073,6 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   max-width: 800px;
   margin: 20px auto;
-
 }
 
 .resultTitle {
@@ -1159,28 +1163,48 @@
 }
 
 .riskItem {
-  background: #f8f9fa;
+  background: #ebf8ffc7;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0rem 0 0.5rem #efefef91;
   text-align: left;
 }
 
-.riskItem h4 {
+.riskItem h3 {
   font-size: 18px;
-  color: #333;
+  color: #757575;
+  font-weight: 400;
   margin-bottom: 10px;
 }
 
 .riskItem p {
-  font-size: 16px;
-  color: #158067;
-  font-weight: bold;
+  font-size: 18px;
+  color: #1E1E1E;
+  font-weight: 600;
+  line-height: 24px;
 }
 
-.blueText {
-  color: #158067;
+.blueText2 {
+  color: #242424;
   font-weight: bold;
+  font-size: 20px;
+
+  width: 5rem;
+  text-align: center;
+
+
+  font-weight: 600;
+  border-collapse: separate;
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.3rem;
+  margin: 10px;
+}
+.blueText2:hover {
+  background-color: #D3FCA0;
+  border-radius: 0.3rem;
+}
+.blueText:hover {
+  color: #445AB4;
 }
 
 /* Responsive Styles */

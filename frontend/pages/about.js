@@ -106,7 +106,7 @@ export default function About() {
       <section className={styles.benefits}>
         <div className={styles.benefitsText}>
           <h2>We guarantee the safety and security of your investments</h2>
-          <p>Our project created a secure, user-friendly cryptocurrency wallet using advanced APIs for enhanced security and efficiency.</p>
+          <p>Our project includes a secure, user-friendly cryptocurrency wallet using advanced algorithms to detect risk addresses for enhanced security and efficiency.</p>
           <p>With the latest encryption standards and an intuitive interface, it ensures safe, seamless digital asset management.</p>
        </div>
 
@@ -120,8 +120,10 @@ export default function About() {
         <h2>Start using poWallet now!</h2>
         <div className={styles.footerButtons}>
           <button className={styles.downloadButton}>Download now</button>
+          <a href="https://youtu.be/rZBa6R0tdaM" target="_blank" rel="noopener noreferrer">
           <button className={styles.viewDemoButton}>View demo video</button>
-          </div>
+          </a>
+        </div>
       </section>
 
 

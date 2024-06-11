@@ -1,10 +1,15 @@
 // topRisk.js
-import { useState } from "react";
+import { useState,  useRef } from "react";
+
+
+//import { useState } from "react";
 import styles from "@/styles/Home.module.css";
 import SearchResults from "./searchResults";
 
 export default function TopRisk({ result }) {
   const [addressInfo, setAddressInfo] = useState(null);
+
+  const ref = useRef(null);
 
   const handleAddressClick = async (address) => {
     const response = await fetch(`http://143.110.178.16:8000/address-info/${address}`, {
@@ -12,12 +17,17 @@ export default function TopRisk({ result }) {
         'X-API-KEY': 'your_api_key_1'
       }
     });
+
     const data = await response.json();
     setAddressInfo(data);
+
+    ref.current?.scrollIntoView({behavior: 'smooth'});  // Scroll Here
+    
   };
 
   return (
-    <div id="bg">
+    <div className={styles.bg}>
+      <div className={styles.riskContent}>
       <section className={styles.riskResults}>
         <p className={styles.riskTitle}>Top Risk Addresses</p>
         <table className={styles.riskSection}>
@@ -39,13 +49,20 @@ export default function TopRisk({ result }) {
                     {item.address}
                   </a>
                 </td>
-                <td>{(item.risk_score*100).toFixed(5)}</td>
+                <td className={styles.blueText2}>{(item.risk_score*100).toFixed(5)}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </section>
-      {addressInfo && <SearchResults result={addressInfo} />}
+      
+      <div ref={ref}>
+        {addressInfo && <SearchResults result={addressInfo} />}
+      </div>
+
     </div>
+
+    </div>
+    
   );
 }
