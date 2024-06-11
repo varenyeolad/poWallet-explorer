@@ -1,4 +1,5 @@
-async function getTopData() {
+//getTopData
+export async function getTopData() {
     const res = await fetch('http://143.110.178.16:8000/top-risk-addresses'
     , {
         headers: {
@@ -17,5 +18,3 @@ async function getTopData() {
    
 }
   
-
-  export {getTopData} 

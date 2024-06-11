@@ -1,3 +1,4 @@
+//getInfo
 export async function getAddressInfo(address) {
     const res = await fetch(`http://143.110.178.16:8000/address-info/${address}`, {
       headers: {
