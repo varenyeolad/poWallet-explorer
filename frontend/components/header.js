@@ -6,16 +6,17 @@ import styles from "@/styles/Home.module.css";
 
 import Logo from "../public/assets/logo.png";
 
+//header.js
 export default function Header() {
-  const [ethPrice, setEthPrice] = useState("");
+  // const [ethPrice, setEthPrice] = useState("");
 
-  useEffect(() => {
-    const getEthPrice = async () => {
-      const response = await axios.get("http://localhost:5001/getethprice", {});
-      setEthPrice(response.data.usdPrice);
-    };
-    getEthPrice();
-  }, []);
+  // useEffect(() => {
+  //   const getEthPrice = async () => {
+  //     const response = await axios.get("http://localhost:5001/getethprice", {});
+  //     setEthPrice(response.data.usdPrice);
+  //   };
+  //   getEthPrice();
+  // }, []);
 
   return (
     <section className={styles.header}>
@@ -31,7 +32,7 @@ export default function Header() {
           <Link href="/risk" className={styles.menuLink}>
             Top risk
           </Link>
-          <Link href="/docs" className={styles.menuLink}>
+          <Link href="http://143.110.178.16:8000/swagger/" className={styles.menuLink}>
             API
           </Link>
           <Link href="/report" className={styles.menuLink}>

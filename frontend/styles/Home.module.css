@@ -209,7 +209,7 @@
   margin: -2rem 11.5rem;
   border-radius: 0.5rem;
   padding: 1rem;
-  box-shadow: 0rem 0 1.5rem #dddddd96;
+
 }
 
 .searchResults > p {
@@ -237,6 +237,12 @@
   margin-bottom: 0.5rem;
   padding-bottom: 0.5rem;
 }
+/* Home.module.css */
+.clickableAddress {
+  cursor: pointer;
+  color: blue; /* Adjust the color to your preference */
+}
+
 
 .txnTitle > th {
   width: 9rem;
@@ -1052,6 +1058,129 @@
 
 .riskSection .criticalRisk {
   color: #ff0000;
+}
+
+/* Home.module.css */
+.searchResults {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  max-width: 800px;
+  margin: 20px auto;
+
+}
+
+.resultTitle {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.amountOfTransactions {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.riskMeter {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.riskMeter p {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.riskBarContainer {
+  width: 100%;
+  background: #e0e0e0;
+  border-radius: 25px;
+  overflow: hidden;
+  height: 20px;
+}
+
+.riskBar {
+  height: 100%;
+  background: linear-gradient(to right, #00ff00, #ff0000);
+}
+
+.trackButton {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: #158067;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.trackButton:hover {
+  background: #158067;
+}
+
+.assessmentResult {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.assessmentResult h3 {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.fraudText {
+  font-size: 22px;
+  color: #ff0000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fraudIcon {
+  margin-left: 5px;
+}
+
+.summaryText {
+  font-size: 16px;
+  color: #666;
+  margin-top: 10px;
+  text-align: justify;
+}
+
+.riskInfo {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.riskItem {
+  background: #f8f9fa;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  text-align: left;
+}
+
+.riskItem h4 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.riskItem p {
+  font-size: 16px;
+  color: #158067;
+  font-weight: bold;
+}
+
+.blueText {
+  color: #158067;
+  font-weight: bold;
 }
 
 /* Responsive Styles */

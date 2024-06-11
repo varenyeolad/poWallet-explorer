@@ -1,66 +1,107 @@
-import moment from "moment";
+// searchResults.js
 import styles from "@/styles/Home.module.css";
 
-export default function SearchResults(props) {
+export default function SearchResults({ result }) {
   return (
     <section className={styles.searchResults}>
+      <h2 className={styles.resultTitle}>Risk Assessment</h2>
       <p className={styles.amountOfTransactions}>
-        Latest 25 from a total of{" "}
-        <span className={styles.blueText}>{props.result.result.length}</span>
-        transactions
+        Risk assessment for address{" "}
+        <a 
+          href={`https://etherscan.io/address/${result.address}`} 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          className={styles.blueText}
+        >
+          {result.address}
+        </a>
       </p>
-      <table className={styles.txnSection}>
-        <thead>
-          <tr className={styles.txnTitle}>
-            <th>Transaction Hash</th>
-            <th>Method</th>
-            <th>Block</th>
-            <th className={styles.blueText}>Age</th>
-            <th>From</th>
-            <th></th>
-            <th>To</th>
-            <th>Value</th>
-            <th className={styles.blueText}>Txn Fee</th>
-          </tr>
-        </thead>
-        {props.result.result.map((txn) => {
-          return (
-            <tr className={styles.txn}>
-              <td className={styles.blueText}>{txn.hash.slice(0, 16)}...</td>
-              <td>
-                <span className={styles.transfer}>
-                  {txn.decoded_call ? txn.decoded_call.label : "Unknown"}
-                </span>
-              </td>
-              <td className={styles.blueText}>{txn.block_number}</td>
-              <td>{moment(txn.block_timestamp, "YYYYMMDD").fromNow()}</td>
-              <td>
-                {txn.from_address.slice(0, 8)}...{txn.from_address.slice(34)}
-              </td>
-              <td>
-                <span
-                  className={`${
-                    txn.from_address.toLowerCase() !==
-                    props.result.searchInput.toLowerCase()
-                      ? styles.inTxn
-                      : styles.outTxn
-                  }`}
-                >
-                  {txn.from_address.toLowerCase() !==
-                  props.result.searchInput.toLowerCase()
-                    ? "IN"
-                    : "OUT"}
-                </span>
-              </td>
-              <td className={styles.blueText}>
-                {txn.to_address.slice(0, 8)}...{txn.to_address.slice(34)}
-              </td>
-              <td>{(txn.value / 10 ** 18).toFixed(5)} ETH</td>
-              <td>{(txn.gas_price / 10 ** 18).toFixed(12)}</td>
-            </tr>
-          );
-        })}
-      </table>
+      <section className={styles.riskInfo}>
+        {result.risk_score !== undefined && (
+          <section className={styles.riskItem}>
+            <h3>Risk Score</h3>
+            <p className={styles.blueText}>{result.risk_score}</p>
+          </section>
+        )}
+        {result.risk_reason && (
+          <section className={styles.riskItem}>
+            <h3>Risk Reason</h3>
+            <p className={styles.blueText}>{result.risk_reason}</p>
+          </section>
+        )}
+        {result.overall_assessment && (
+          <section className={styles.riskItem}>
+            <h3>Overall Assessment</h3>
+            <p className={styles.blueText}>{result.overall_assessment}</p>
+          </section>
+        )}
+        {result.total_transactions !== undefined && (
+          <section className={styles.riskItem}>
+            <h3>Total Transactions</h3>
+            <p className={styles.blueText}>{result.total_transactions}</p>
+          </section>
+        )}
+        {result.total_received !== undefined && (
+          <section className={styles.riskItem}>
+            <h3>Total Received</h3>
+            <p className={styles.blueText}>{result.total_received.toFixed(5)} ETH</p>
+          </section>
+        )}
+        {result.total_sent !== undefined && (
+          <section className={styles.riskItem}>
+            <h3>Total Sent</h3>
+            <p className={styles.blueText}>{result.total_sent.toFixed(5)} ETH</p>
+          </section>
+        )}
+        {result.current_balance !== undefined && (
+          <section className={styles.riskItem}>
+            <h3>Current Balance</h3>
+            <p className={styles.blueText}>{result.current_balance.toFixed(5)} ETH</p>
+          </section>
+        )}
+        {result.blacklist_category && (
+          <section className={styles.riskItem}>
+            <h3>Blacklist Category</h3>
+            <p className={styles.blueText}>{result.blacklist_category}</p>
+          </section>
+        )}
+        {result.blacklist_search_result && (
+          <section className={styles.riskItem}>
+            <h3>Blacklist Search Result</h3>
+            <p className={styles.blueText}>{result.blacklist_search_result}</p>
+          </section>
+        )}
+        {result.phishing_dataset_check && (
+          <section className={styles.riskItem}>
+            <h3>Phishing Dataset Check</h3>
+            <p className={styles.blueText}>{result.phishing_dataset_check}</p>
+          </section>
+        )}
+        {result.transaction_tracing_result && (
+          <section className={styles.riskItem}>
+            <h3>Transaction Tracing Result</h3>
+            <p className={styles.blueText}>{result.transaction_tracing_result}</p>
+          </section>
+        )}
+        {result.whitelist_search_result && (
+          <section className={styles.riskItem}>
+            <h3>Whitelist Search Result</h3>
+            <p className={styles.blueText}>{result.whitelist_search_result}</p>
+          </section>
+        )}
+        {result.ml_analysis_result && (
+          <section className={styles.riskItem}>
+            <h3>ML Analysis Result</h3>
+            <p className={styles.blueText}>{result.ml_analysis_result}</p>
+          </section>
+        )}
+        {result.top_features_influencing_ml_analysis && (
+          <section className={styles.riskItem}>
+            <h3>Top Features Influencing ML Analysis</h3>
+            <p className={styles.blueText}>{result.top_features_influencing_ml_analysis}</p>
+          </section>
+        )}
+      </section>
     </section>
   );
 }

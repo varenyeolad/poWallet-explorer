@@ -1,94 +1,51 @@
+// topRisk.js
 import { useState } from "react";
-import moment from "moment";
 import styles from "@/styles/Home.module.css";
+import SearchResults from "./searchResults";
 
-const riskLevelClass = (level) => {
-  switch (level) {
-    case "High Risk":
-      return styles.highRisk;
-    case "Medium Risk":
-      return styles.mediumRisk;
-    case "Low Risk":
-      return styles.lowRisk;
-    case "Critical Risk":
-      return styles.criticalRisk;
-    default:
-      return "";
-  }
-};
+export default function TopRisk({ result }) {
+  const [addressInfo, setAddressInfo] = useState(null);
 
-export default function TopRisk(props) {
-  const [selectedType, setSelectedType] = useState("Addresses");
-  const [selectedRiskLevel, setSelectedRiskLevel] = useState("All");
-
-  const handleTypeChange = (e) => {
-    setSelectedType(e.target.value);
+  const handleAddressClick = async (address) => {
+    const response = await fetch(`http://143.110.178.16:8000/address-info/${address}`, {
+      headers: {
+        'X-API-KEY': 'your_api_key_1'
+      }
+    });
+    const data = await response.json();
+    setAddressInfo(data);
   };
-
-  const handleRiskLevelChange = (e) => {
-    setSelectedRiskLevel(e.target.value);
-  };
-
-  let data = [];
-  if (selectedType === "Addresses") {
-    data = props.result.addresses;
-  } else if (selectedType === "Domains") {
-    data = props.result.domains;
-  } else {
-    data = [...props.result.addresses, ...props.result.domains];
-  }
-
-  if (selectedRiskLevel !== "All") {
-    data = data.filter(txn => txn.Risk_Level === selectedRiskLevel);
-  }
 
   return (
     <div id="bg">
       <section className={styles.riskResults}>
-        <p className={styles.riskTitle}>Top Risk {selectedType}</p>
-        <div className={styles.dropdownContainer}>
-          <div className={styles.dropdownWrapper}>
-            <select onChange={handleTypeChange} value={selectedType} className={styles.dropdown}>
-              <option value="Both">All Categories</option>
-              <option value="Addresses">Addresses</option>
-              <option value="Domains">Domains</option> 
-            </select>
-          </div>
-          <div className={styles.dropdownWrapper}>
-            <select onChange={handleRiskLevelChange} value={selectedRiskLevel} className={styles.dropdown}>
-              <option value="All">All Risk Levels</option>
-              <option value="High Risk">High Risk</option>
-              <option value="Medium Risk">Medium Risk</option>
-              <option value="Low Risk">Low Risk</option>
-              <option value="Critical Risk">Critical Risk</option>
-            </select>
-          </div>
-        </div>
+        <p className={styles.riskTitle}>Top Risk Addresses</p>
         <table className={styles.riskSection}>
           <thead>
             <tr className={styles.riskTitle}>
-              <th>dApps</th>
-              <th>Risk Level</th>
-              <th className={styles.blueText}>Listed Date</th>
-              <th>Category</th>
+              <th>Address</th>
+              <th>Risk Score</th>
             </tr>
           </thead>
           <tbody>
-            {data.map((txn) => (
-              <tr className={styles.risk} key={txn.hash}>
-                <td className={styles.blueText}>{txn.hash}</td>
-                <td className={riskLevelClass(txn.Risk_Level)}>
-                  {txn.Risk_Level}
+            {result.map((item) => (
+              <tr className={styles.risk} key={item.address}>
+                <td className={styles.blueText}>
+                  <a 
+                    href="#" 
+                    onClick={() => handleAddressClick(item.address)}
+                    className={styles.clickableAddress}
+                  >
+                    {item.address}
+                  </a>
                 </td>
-                <td>{moment(txn.Listed_Date).fromNow()}</td>
-                <td className={riskLevelClass(txn.Risk_Driver)}>
-                  {txn.Risk_Driver}
-                </td>
+                <td>{(item.risk_score*100).toFixed(5)}</td>
               </tr>
             ))}
           </tbody>
         </table>
       </section>
+      {addressInfo && <SearchResults result={addressInfo} />}
     </div>
   );
 }

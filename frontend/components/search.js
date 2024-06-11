@@ -1,5 +1,5 @@
-import { useState} from "react";
-import axios from "axios";
+//search.js
+import { useState } from "react";
 import styles from "@/styles/Home.module.css";
 import { RocketColored, Beans } from "@web3uikit/icons";
 import { Illustration } from "@web3uikit/core";
@@ -8,7 +8,7 @@ import SearchResults from "./searchResults.js";
 
 export default function Search() {
   const [showResult, setShowResult] = useState(false);
-  const [result, setResult] = useState([]);
+  const [result, setResult] = useState({});
   const [searchInput, setSearchInput] = useState("");
 
   const changeHandler = (e) => {
@@ -18,11 +18,14 @@ export default function Search() {
   const handleSearch = async () => {
     document.querySelector("#inputField").value = "";
 
-    const response = await axios.get("http://localhost:5001/address", {
-      params: { address: searchInput },
+    const response = await fetch(`http://143.110.178.16:8000/scan/${searchInput}`, {
+      headers: {
+        'X-API-KEY': 'your_api_key_1' 
+      }
     });
 
-    setResult(response.data.result);
+    const data = await response.json();
+    setResult(data);
     setShowResult(true);
   };
 
@@ -77,7 +80,7 @@ export default function Search() {
           </section>
         </section>
       </section>
-      {showResult && <SearchResults result={{ result, searchInput }} />}
+      {showResult && <SearchResults result={result} />}
     </section>
   );
 }

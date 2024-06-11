@@ -17,8 +17,9 @@
     "@nivo/bump": "^0.87.0",
     "@web3uikit/core": "^0.2.47",
     "@web3uikit/icons": "^0.2.46",
-    "axios": "^1.3.4",
+    "axios": "^1.7.2",
     "chart.js": "^4.4.3",
+    "debug": "^4.3.5",
     "fortawesome": "^0.0.1-security",
     "moment": "^2.29.4",
     "next": "13.2.3",
@@ -27,6 +28,8 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "18.2.0",
     "react-toastify": "^10.0.5",
-    "styled-components": "^6.1.11"
+    "styled-components": "^6.1.11",
+    "swagger-ui": "^5.17.14",
+    "swagger-ui-react": "^5.17.14"
   }
 }
