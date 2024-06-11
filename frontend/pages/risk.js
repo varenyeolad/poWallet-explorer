@@ -1,4 +1,4 @@
-//paages/risk.js
+// pages/risk.js
 import Head from "next/head";
 import Header from "../components/header";
 import TopRisk from "../components/topRisk";

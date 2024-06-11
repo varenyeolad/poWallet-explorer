@@ -1,9 +1,8 @@
-//index.js
+// pages/index.js
 import Head from "next/head";
 import styles from "@/styles/Home.module.css";
-import Header from "../components/header.js";
-import SearchComp from "../components/search.js";
-
+import Header from "../components/header";
+import SearchComp from "../components/search";
 
 export default function Home() {
   return (

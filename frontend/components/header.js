@@ -1,21 +1,10 @@
+// components/Header.js
 import Image from "next/image";
 import Link from "next/link";
 import styles from "@/styles/Home.module.css";
-
 import Logo from "../public/assets/logo.png";
 
-//header.js
-export default function Header() {
-  // const [ethPrice, setEthPrice] = useState("");
-
-  // useEffect(() => {
-  //   const getEthPrice = async () => {
-  //     const response = await axios.get("http://localhost:5001/getethprice", {});
-  //     setEthPrice(response.data.usdPrice);
-  //   };
-  //   getEthPrice();
-  // }, []);
-
+const Header = () => {
   return (
     <section className={styles.header}>
       <section className={styles.navbar}>
@@ -40,4 +29,6 @@ export default function Header() {
       </section>
     </section>
   );
-}
+};
+
+export default Header;
