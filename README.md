@@ -3,7 +3,6 @@
 ## Overview
 poWallet Explorer is a web-based tool for checking the risk level of cryptocurrency addresses. It integrates with the SCAN SCAM API to provide users with security assessments.
 
-![poWallet Explorer](assets/powallet_explorer.png)
 
 ## Table of Contents
 - [Overview](#overview)
@@ -17,8 +16,6 @@ poWallet Explorer is a web-based tool for checking the risk level of cryptocurre
 - Integration with the SCAN SCAM API for real-time risk assessment
 - User-friendly design
 - Comprehensive logging and error handling
-
-![Features](assets/features.png)
 
 ## Installation
 
